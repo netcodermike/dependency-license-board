@@ -1,0 +1,2 @@
+example-data-tool==1.2.3
+# Synthetic manifest; do not install these example names.
