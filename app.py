@@ -14,6 +14,8 @@ def inventory(folder):
   for line in req.read_text(encoding='utf-8').splitlines():
    line=line.strip()
    if not line or line.startswith('#'):continue
+   if line.startswith('-'):
+    errors.append('Unsupported requirements directive: '+line);continue
    match=re.match(r'([A-Za-z0-9_.-]+)(.*)',line)
    if match:rows.append({'ecosystem':'pypi','name':match[1],'requested':match[2].strip(),'group':'requirements','license':'unknown; inspect distribution metadata'})
    else:errors.append('Unsupported requirements directive: '+line)
